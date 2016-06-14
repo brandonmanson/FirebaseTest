@@ -27,9 +27,9 @@
     // Optional: Place the button in the center of your view.
     loginButton.center = self.view.center;
     [self.view addSubview:loginButton];
+    [self getFIRUserProperties];
     
-    
-    FIRDatabaseReference *ref = [[FIRDatabase database] reference];
+//    FIRDatabaseReference *ref = [[FIRDatabase database] reference];
 //    FIRDatabaseReference *userRef = [ref child:@"user"];
 //    NSLog(@"Before Set Value: %@", userRef);
 //    NSDictionary *newUser = [NSDictionary dictionaryWithObjectsAndKeys:@"Brandon", @"firstName", @"Manson", @"lastName", nil];
@@ -70,6 +70,27 @@
         }
     } else {
         NSLog(@"%@", error.localizedDescription);
+    }
+}
+
+- (void)getFIRUserProperties {
+    FIRUser *user = [FIRAuth auth].currentUser;
+    
+    if (user != nil) {
+        for (id<FIRUserInfo> profile in user.providerData) {
+            NSString *providerID = profile.providerID;
+            NSString *uid = profile.uid;
+            NSString *name = profile.displayName;
+            NSString *email = profile.email;
+            NSURL *photoURL = profile.photoURL;
+            NSLog(@"Provider ID: %@", providerID);
+            NSLog(@"uid: %@", uid);
+            NSLog(@"Name: %@", name);
+            NSLog(@"Email: %@", email);
+            NSLog(@"Photo URL: %@", [NSString stringWithFormat:@"%@", photoURL]);
+            _userNameLabel.text = name;
+            _userProfilePicture.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
+        }
     }
 }
 

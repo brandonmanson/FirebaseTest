@@ -13,8 +13,9 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 
-@interface ViewController : UIViewController <FBSDKLoginButtonDelegate>
+@interface ViewController : UIViewController <FBSDKLoginButtonDelegate, FIRUserInfo>
 
+- (void)getFIRUserProperties;
 
 @end
 
