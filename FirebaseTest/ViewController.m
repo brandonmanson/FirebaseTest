@@ -12,6 +12,8 @@
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *userProfilePicture;
+@property (strong, nonatomic) IBOutlet UITextField *beerTextField;
+@property (strong, nonatomic) IBOutlet UITableView *beersTableView;
 
 @end
 
@@ -28,20 +30,18 @@
     loginButton.center = self.view.center;
     [self.view addSubview:loginButton];
     [self getFIRUserProperties];
+    _beers = [[NSMutableArray alloc] init];
     
 //    FIRDatabaseReference *ref = [[FIRDatabase database] reference];
-//    FIRDatabaseReference *userRef = [ref child:@"user"];
-//    NSLog(@"Before Set Value: %@", userRef);
-//    NSDictionary *newUser = [NSDictionary dictionaryWithObjectsAndKeys:@"Brandon", @"firstName", @"Manson", @"lastName", nil];
-//    FIRDatabaseReference *newUserRef = [userRef childByAutoId];
-//    [newUserRef setValue:newUser];
+//    FIRDatabaseReference *testRef = [ref child:@"test"].childByAutoId;
 //    
-//    // Get user info
-//    [[userRef child:@"-KKDeMy0WdkqCcD5_JLe"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot *snapshot) {
-//        NSLog(@"%@ %@", snapshot.value[@"firstName"], snapshot.value[@"lastName"]);
-//    } withCancelBlock:^(NSError *error) {
-//        NSLog(@"%@", error.localizedDescription);
-//    }];
+//    NSDictionary *testObject = [NSDictionary dictionaryWithObjectsAndKeys:@"test", @"test", nil];
+//    [testRef setValue:testObject];
+//    [testRef observeEventType:FIRDataEventTypeChildAdded
+//                    withBlock:^(FIRDataSnapshot *snapshot) {
+//                        NSLog(@"Snapshot: %@", snapshot.value);
+//                    }];
+
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -93,5 +93,41 @@
         }
     }
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [_beers count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"beerCell" forIndexPath:indexPath];
+    Beer *beerInCell = [_beers objectAtIndex:indexPath.row];
+    cell.textLabel.text = beerInCell.beerName;
+    return cell;
+}
+
+
+
+- (IBAction)addBeerButtonPressed:(UIButton *)sender {
+    Beer *newBeer = [[Beer alloc] initWithBeerName:_beerTextField.text];
+    FIRDatabaseReference *ref = [[FIRDatabase database] reference];
+    FIRDatabaseReference *beerRef = [ref child:@"beers"].childByAutoId;
+    NSDictionary *newBeerInfo = [NSDictionary dictionaryWithObjectsAndKeys:newBeer.beerName, @"beer_name",  nil];
+    [beerRef setValue:newBeerInfo];
+    [beerRef observeEventType:FIRDataEventTypeChildAdded withBlock:^(FIRDataSnapshot *snapshot) {
+        NSLog(@"Beer Snapshot: %@", snapshot.value);
+        newBeer.uid = beerRef.key;
+        NSLog(@"newBeer uid: %@\nnewBeer name: %@", newBeer.uid, newBeer.beerName);
+        NSLog(@"_beers before: %@", _beers.description);
+        [_beers addObject:newBeer];
+        NSLog(@"_beers before: %@", _beers.description);
+        [_beersTableView reloadData];
+    }];
+    _beerTextField.text = @"";
+}
+
 
 @end

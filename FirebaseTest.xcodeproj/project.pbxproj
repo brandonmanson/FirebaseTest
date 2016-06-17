@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		72B703EFE1AA764C00167677 /* libPods-FirebaseTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5947C0C585A6D2A7E0DC2AEF /* libPods-FirebaseTest.a */; };
+		941CF2151D1381210091A39A /* Beer.m in Sources */ = {isa = PBXBuildFile; fileRef = 941CF2141D1381210091A39A /* Beer.m */; };
 		94640F881D0F5A5D0035A2DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94640F871D0F5A5D0035A2DE /* main.m */; };
 		94640F8B1D0F5A5D0035A2DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94640F8A1D0F5A5D0035A2DE /* AppDelegate.m */; };
 		94640F8E1D0F5A5D0035A2DE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94640F8D1D0F5A5D0035A2DE /* ViewController.m */; };
@@ -20,6 +21,8 @@
 /* Begin PBXFileReference section */
 		5947C0C585A6D2A7E0DC2AEF /* libPods-FirebaseTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FirebaseTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B5A82F37EE29FE0F8728C20 /* Pods-FirebaseTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseTest/Pods-FirebaseTest.release.xcconfig"; sourceTree = "<group>"; };
+		941CF2131D1381210091A39A /* Beer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beer.h; sourceTree = "<group>"; };
+		941CF2141D1381210091A39A /* Beer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Beer.m; sourceTree = "<group>"; };
 		94640F831D0F5A5D0035A2DE /* FirebaseTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94640F871D0F5A5D0035A2DE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		94640F891D0F5A5D0035A2DE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -71,6 +74,8 @@
 				94640F8A1D0F5A5D0035A2DE /* AppDelegate.m */,
 				94640F8C1D0F5A5D0035A2DE /* ViewController.h */,
 				94640F8D1D0F5A5D0035A2DE /* ViewController.m */,
+				941CF2131D1381210091A39A /* Beer.h */,
+				941CF2141D1381210091A39A /* Beer.m */,
 				94640F8F1D0F5A5D0035A2DE /* Main.storyboard */,
 				94640F921D0F5A5D0035A2DE /* Assets.xcassets */,
 				94640F941D0F5A5D0035A2DE /* LaunchScreen.storyboard */,
@@ -231,6 +236,7 @@
 				94640F8E1D0F5A5D0035A2DE /* ViewController.m in Sources */,
 				94640F8B1D0F5A5D0035A2DE /* AppDelegate.m in Sources */,
 				94640F881D0F5A5D0035A2DE /* main.m in Sources */,
+				941CF2151D1381210091A39A /* Beer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

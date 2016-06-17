@@ -11,9 +11,12 @@
 #import <FirebaseAuth/FirebaseAuth.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "Beer.h"
 
 
-@interface ViewController : UIViewController <FBSDKLoginButtonDelegate, FIRUserInfo>
+@interface ViewController : UIViewController <FBSDKLoginButtonDelegate, FIRUserInfo, UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) NSMutableArray *beers;
 
 - (void)getFIRUserProperties;
 
