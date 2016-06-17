@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *userProfilePicture;
 @property (strong, nonatomic) IBOutlet UITextField *beerTextField;
 @property (strong, nonatomic) IBOutlet UITableView *beersTableView;
+@property (strong, nonatomic) IBOutlet UILabel *latestBeerLabel;
 
 @end
 
@@ -115,16 +116,16 @@
     Beer *newBeer = [[Beer alloc] initWithBeerName:_beerTextField.text];
     FIRDatabaseReference *ref = [[FIRDatabase database] reference];
     FIRDatabaseReference *beerRef = [ref child:@"beers"].childByAutoId;
-    NSDictionary *newBeerInfo = [NSDictionary dictionaryWithObjectsAndKeys:newBeer.beerName, @"beer_name",  nil];
+    NSDictionary *newBeerInfo = [NSDictionary dictionaryWithObjectsAndKeys:newBeer.beerName, @"beer_name", @"second value", @"second_value",  nil];
     [beerRef setValue:newBeerInfo];
     [beerRef observeEventType:FIRDataEventTypeChildAdded withBlock:^(FIRDataSnapshot *snapshot) {
-        NSLog(@"Beer Snapshot: %@", snapshot.value);
-        newBeer.uid = beerRef.key;
-        NSLog(@"newBeer uid: %@\nnewBeer name: %@", newBeer.uid, newBeer.beerName);
-        NSLog(@"_beers before: %@", _beers.description);
-        [_beers addObject:newBeer];
-        NSLog(@"_beers before: %@", _beers.description);
-        [_beersTableView reloadData];
+        NSLog(@"Beer Snapshot Key: %@", snapshot.key);
+        if ([snapshot.key isEqualToString:@"beer_name"]) {
+            newBeer.uid = beerRef.key;
+            [_beers addObject:newBeer];
+            [_beersTableView reloadData];
+            _latestBeerLabel.text = [NSString stringWithFormat:@"Latest Beer: %@", snapshot.value];
+        }
     }];
     _beerTextField.text = @"";
 }
