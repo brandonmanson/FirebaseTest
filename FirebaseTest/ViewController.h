@@ -12,11 +12,13 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "Beer.h"
+#import "Establishment.h"
 
 
 @interface ViewController : UIViewController <FBSDKLoginButtonDelegate, FIRUserInfo, UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSMutableArray *beers;
+@property (strong, nonatomic) NSMutableArray *establishments;
 
 - (void)getFIRUserProperties;
 

@@ -32,6 +32,7 @@
     [self.view addSubview:loginButton];
     [self getFIRUserProperties];
     _beers = [[NSMutableArray alloc] init];
+    _establishments = [[NSMutableArray alloc] init];
     
 //    FIRDatabaseReference *ref = [[FIRDatabase database] reference];
 //    FIRDatabaseReference *testRef = [ref child:@"test"].childByAutoId;
@@ -110,7 +111,15 @@
     return cell;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Establishment *establishmentToAdd = [_establishments lastObject];
+    Beer *beerAtSelectedIndex = [_beers objectAtIndex:indexPath.row];
+    NSString *idOfBeerToUpdate = beerAtSelectedIndex.uid;
+    FIRDatabaseReference *ref = [[FIRDatabase database] reference];
+    FIRDatabaseReference *beerRef = [ref child:[NSString stringWithFormat:@"beers/%@", idOfBeerToUpdate]];
+    FIRDatabaseReference *establishmentsRef = [beerRef child:@"establishments"];
+    [establishmentsRef updateChildValues:@{[NSString stringWithFormat:@"%@", establishmentToAdd.uid]: @"true"}];
+}
 
 - (IBAction)addBeerButtonPressed:(UIButton *)sender {
     Beer *newBeer = [[Beer alloc] initWithBeerName:_beerTextField.text];
@@ -128,6 +137,20 @@
         }
     }];
     _beerTextField.text = @"";
+}
+- (IBAction)addEstablishmentButtonPressed:(UIButton *)sender {
+    Establishment *newEstablishment = [[Establishment alloc]initWithEstablishmentName:@"Hopcat - Detroit"];
+    FIRDatabaseReference *ref = [[FIRDatabase database] reference];
+    FIRDatabaseReference *establishmentRef = [ref child:@"establishments"].childByAutoId;
+    NSDictionary *newEstablishmentInfo = [NSDictionary dictionaryWithObjectsAndKeys:newEstablishment.establishmentName, @"establishment_name", nil];
+    [establishmentRef setValue:newEstablishmentInfo];
+    [establishmentRef observeEventType:FIRDataEventTypeChildAdded withBlock:^(FIRDataSnapshot *snapshot) {
+        NSLog(@"Establishment Snapshot Key: %@", snapshot.key);
+        if ([snapshot.key isEqualToString:@"establishment_name"]) {
+            newEstablishment.uid = establishmentRef.key;
+            [_establishments addObject:newEstablishment];
+        }
+    }];
 }
 
 
