@@ -20,6 +20,13 @@
 @property (strong, nonatomic) NSMutableArray *beers;
 @property (strong, nonatomic) NSMutableArray *establishments;
 
+@property (strong, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *userProfilePicture;
+@property (strong, nonatomic) IBOutlet UITextField *beerTextField;
+@property (strong, nonatomic) IBOutlet UITableView *beersTableView;
+@property (strong, nonatomic) IBOutlet UILabel *latestBeerLabel;
+@property (strong, nonatomic) NSMutableArray *listBeersArray;
+
 - (void)getFIRUserProperties;
 
 @end

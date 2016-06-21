@@ -7,14 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "ListBeersTableViewController.h"
 
 
 @interface ViewController ()
-@property (strong, nonatomic) IBOutlet UILabel *userNameLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *userProfilePicture;
-@property (strong, nonatomic) IBOutlet UITextField *beerTextField;
-@property (strong, nonatomic) IBOutlet UITableView *beersTableView;
-@property (strong, nonatomic) IBOutlet UILabel *latestBeerLabel;
+
 
 @end
 
@@ -102,6 +99,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [_beers count];
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -151,6 +149,23 @@
             [_establishments addObject:newEstablishment];
         }
     }];
+}
+
+
+- (IBAction)listBeersButton:(UIButton *)sender {
+    
+}
+
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    [self listBeers];
+//    ListBeersTableViewController *lbvc = [segue destinationViewController];
+    
+ //   lbvc.listBeersFromFireBaseArray = _listBeersArray;
+    NSLog(@"Prepare for Segue triggered");
+//    NSLog(@"%@", _listBeersArray);
+//    NSLog(@"%@", lbvc.listBeersFromFireBaseArray);
 }
 
 

@@ -17,6 +17,8 @@
 		94640F931D0F5A5D0035A2DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94640F921D0F5A5D0035A2DE /* Assets.xcassets */; };
 		94640F961D0F5A5D0035A2DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94640F941D0F5A5D0035A2DE /* LaunchScreen.storyboard */; };
 		94640FA01D0F649C0035A2DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94640F9F1D0F649C0035A2DE /* GoogleService-Info.plist */; };
+		B8E77E991D18686400B7F1EF /* ListBeersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E77E981D18686400B7F1EF /* ListBeersTableViewController.m */; };
+		B8E77E9B1D19899600B7F1EF /* beer-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B8E77E9A1D19899600B7F1EF /* beer-icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,9 @@
 		94640F951D0F5A5D0035A2DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		94640F971D0F5A5D0035A2DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94640F9F1D0F649C0035A2DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B8E77E971D18686400B7F1EF /* ListBeersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListBeersTableViewController.h; sourceTree = "<group>"; };
+		B8E77E981D18686400B7F1EF /* ListBeersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListBeersTableViewController.m; sourceTree = "<group>"; };
+		B8E77E9A1D19899600B7F1EF /* beer-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "beer-icon.png"; sourceTree = "<group>"; };
 		EF9D19F7D8C60691C3E9957F /* Pods-FirebaseTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseTest/Pods-FirebaseTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +82,8 @@
 				94640F8A1D0F5A5D0035A2DE /* AppDelegate.m */,
 				94640F8C1D0F5A5D0035A2DE /* ViewController.h */,
 				94640F8D1D0F5A5D0035A2DE /* ViewController.m */,
+				B8E77E971D18686400B7F1EF /* ListBeersTableViewController.h */,
+				B8E77E981D18686400B7F1EF /* ListBeersTableViewController.m */,
 				941CF2181D147ABA0091A39A /* Establishment.h */,
 				941CF2191D147ABA0091A39A /* Establishment.m */,
 				941CF2131D1381210091A39A /* Beer.h */,
@@ -94,6 +101,7 @@
 		94640F861D0F5A5D0035A2DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B8E77E9A1D19899600B7F1EF /* beer-icon.png */,
 				94640F871D0F5A5D0035A2DE /* main.m */,
 			);
 			name = "Supporting Files";
@@ -178,6 +186,7 @@
 			files = (
 				94640FA01D0F649C0035A2DE /* GoogleService-Info.plist in Resources */,
 				94640F961D0F5A5D0035A2DE /* LaunchScreen.storyboard in Resources */,
+				B8E77E9B1D19899600B7F1EF /* beer-icon.png in Resources */,
 				94640F931D0F5A5D0035A2DE /* Assets.xcassets in Resources */,
 				94640F911D0F5A5D0035A2DE /* Main.storyboard in Resources */,
 			);
@@ -239,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94640F8E1D0F5A5D0035A2DE /* ViewController.m in Sources */,
+				B8E77E991D18686400B7F1EF /* ListBeersTableViewController.m in Sources */,
 				94640F8B1D0F5A5D0035A2DE /* AppDelegate.m in Sources */,
 				94640F881D0F5A5D0035A2DE /* main.m in Sources */,
 				941CF21A1D147ABA0091A39A /* Establishment.m in Sources */,
